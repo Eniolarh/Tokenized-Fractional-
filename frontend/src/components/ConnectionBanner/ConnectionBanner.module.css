@@ -1,0 +1,111 @@
+/* ConnectionBanner Styles */
+.connectionBanner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Status variants */
+.disconnected {
+  background-color: var(--warning-bg, rgba(234, 179, 8, 0.1));
+  border: 1px solid var(--warning-border, rgba(234, 179, 8, 0.3));
+  color: var(--warning-text, #eab308);
+}
+
+.error {
+  background-color: var(--error-bg, rgba(239, 68, 68, 0.1));
+  border: 1px solid var(--error-border, rgba(239, 68, 68, 0.3));
+  color: var(--error-text, #ef4444);
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background-color: currentColor;
+  opacity: 0.15;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 0.25rem 0;
+  color: currentColor;
+}
+
+.description {
+  font-size: var(--font-size-xs);
+  margin: 0;
+  color: currentColor;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.retryButton {
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  background-color: currentColor;
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.retryButton:hover {
+  opacity: 0.85;
+}
+
+.retryButton:active {
+  opacity: 0.7;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .disconnected {
+  background-color: rgba(234, 179, 8, 0.15);
+  border-color: rgba(234, 179, 8, 0.4);
+}
+
+[data-theme='dark'] .error {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .connectionBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .retryButton {
+    width: 100%;
+  }
+}
